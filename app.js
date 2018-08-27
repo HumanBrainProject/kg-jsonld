@@ -3,8 +3,12 @@ var express = require('express');
 var logger = require('morgan');
 var indexRouter = require('./routes/jsonld');
 var app = express();
+var compression = require('compression');
+var helmet = require('helmet');
 
 app.use(logger('dev'));
+app.use(compression());
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
